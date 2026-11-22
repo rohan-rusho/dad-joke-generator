@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dad Joke Generator — 40+ Groan-Worthy Dad Jokes | Groan-o-Meter Included</title>
+  <meta name="description" content="Get a fresh dad joke at the tap of a button. 40+ groan-worthy jokes, copy with one tap, and rate each one on the Groan-o-Meter. Free, no sign-up." />
+  <meta name="keywords" content="dad joke generator, dad jokes, funny jokes, groan meter, joke generator" />
+  <meta name="author" content="Dad Joke Generator" />
+  <meta name="theme-color" content="#14100c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dad Joke Generator — 40+ Groan-Worthy Dad Jokes" />
+  <meta property="og:description" content="Fresh dad jokes on tap. Rate each one on the Groan-o-Meter — groan, chuckle, or legendary." />
+  <meta property="og:site_name" content="Dad Joke Generator" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dad Joke Generator — 40+ Groan-Worthy Dad Jokes" />
+  <meta name="twitter:description" content="Fresh dad jokes on tap. Rate each one on the Groan-o-Meter." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Dad Joke Generator — home">
+        <span class="logo-mark" aria-hidden="true">👨</span>
+        Dad Joke <em>Generator</em>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#generator">Generator</a>
+        <a href="#how">How it works</a>
+      </nav>
+      <a class="nav-cta" href="#generator">Tell me one 😂</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">☰</button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="#generator">Generator</a>
+      <a href="#how">How it works</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Hi hungry, I'm Dad</span>
+        <h1>Groan-worthy, <span class="grad">on demand.</span></h1>
+        <p class="hero-sub"><strong>40+ dad jokes</strong>, served fresh at the tap of a button. Rate each one on the Groan-o-Meter — your verdicts are saved.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#generator">😂 Tell me a joke</a>
+          <a class="btn btn-ghost" href="#how">📖 How it works</a>
+        </div>
+        <p class="hero-note">Free forever · No sign-up · Jokes told: <span id="hero-told">0</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="generator">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The joke machine</span>
+          <h2>Your daily dose of dad.</h2>
+          <p>One tap, one joke. No repeats until you've heard them all.</p>
+        </div>
+
+        <div class="tool-card reveal">
+          <div class="stats-grid" aria-live="polite">
+            <div class="stat-card"><p class="stat-num" id="stat-groan">0</p><p class="stat-label">😖 Groans</p></div>
+            <div class="stat-card"><p class="stat-num" id="stat-chuckle">0</p><p class="stat-label">😄 Chuckles</p></div>
+            <div class="stat-card"><p class="stat-num" id="stat-legendary">0</p><p class="stat-label">🏆 Legendary</p></div>
+          </div>
+
+          <div class="joke-output is-empty" id="joke-output" aria-live="polite">
+            <div class="joke-empty-icon" aria-hidden="true" style="font-size:40px;margin-bottom:8px">👨</div>
+            <p id="joke-empty-text">Your dad joke will appear here…</p>
+            <p class="joke-text" id="joke-text" hidden></p>
+            <p class="joke-meta" id="joke-meta" hidden></p>
+          </div>
+
+          <div class="generate-row">
+            <button class="btn btn-primary" id="new-joke-btn" type="button">🎲 New joke</button>
+            <button class="btn btn-ghost" id="copy-btn" type="button" disabled>📋 Copy joke</button>
+          </div>
+
+          <span class="field-label" id="groan-label">Groan-o-Meter — rate this joke</span>
+          <div class="groan-row" role="group" aria-labelledby="groan-label">
+            <button class="groan-btn" type="button" data-rating="groan" id="rate-groan" disabled><span class="emoji" aria-hidden="true">😖</span><span class="name">Groan</span><span class="count" id="count-groan">0 groans</span></button>
+            <button class="groan-btn" type="button" data-rating="chuckle" id="rate-chuckle" disabled><span class="emoji" aria-hidden="true">😄</span><span class="name">Chuckle</span><span class="count" id="count-chuckle">0 chuckles</span></button>
+            <button class="groan-btn" type="button" data-rating="legendary" id="rate-legendary" disabled><span class="emoji" aria-hidden="true">🏆</span><span class="name">Legendary</span><span class="count" id="count-legendary">0 legendary</span></button>
+          </div>
+
+          <div class="tool-actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;justify-content:center">
+            <button class="btn btn-ghost btn-sm" id="reset-tally-btn" type="button">↺ Reset Groan-o-Meter</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Dead simple</span>
+          <h2>How it works.</h2>
+          <p>One button, one joke, one honest verdict.</p>
+        </div>
+        <div class="steps-grid reveal">
+          <div class="step-card"><span class="step-num">1</span><h3>Get a joke</h3><p>Hit New joke for a fresh dad joke. The deck shuffles so you won't hear repeats until you've had them all.</p></div>
+          <div class="step-card"><span class="step-num">2</span><h3>Rate the groan</h3><p>Groan, Chuckle or Legendary — your rating is tallied on the Groan-o-Meter and saved in your browser.</p></div>
+          <div class="step-card"><span class="step-num">3</span><h3>Share the pain</h3><p>Copy the joke with one tap and inflict it on your group chat. That's what dads do.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <a class="logo" href="#top" aria-label="Dad Joke Generator — back to top"><span class="logo-mark" aria-hidden="true">👨</span>Dad Joke <em>Generator</em></a>
+          <p>Hi hungry, I'm Dad. Forty-plus jokes, zero apologies, one very tired Groan-o-Meter.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#generator">Generator</a><a href="#how">How it works</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Dad Joke Generator. Groan responsibly. 😂</span>
+        <span>Ratings saved in your browser.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
